@@ -1,1 +1,34 @@
-@import "~bootstrap/dist/css/bootstrap.min.css";
+body {
+  background-color: #0e7e12;
+}
+
+.card {
+  border-radius: 45px;
+}
+
+h2 {
+  font-size: 56px;
+}
+
+h1 {
+  font-size: 86px;
+}
+
+♦,
+♥ {
+  color: red;
+}
+
+♠,
+♣ {
+  color: black;
+}
+
+button {
+  margin-right: 6px;
+}
+/* 
+<i class="fa-solid fa-heart"></i>
+<i class="fa-solid fa-club"></i>
+<i class="fa-solid fa-diamond"></i>
+<i class="fa-solid fa-spade"></i> */
