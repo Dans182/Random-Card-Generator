@@ -2,12 +2,27 @@
 import "bootstrap";
 import "./style.css";
 
-const deck = document.querySelector("#palo1");
+//CONSTANTES
+/*const deck = document.querySelector("#palo1");
 const number = document.querySelector("#numero");
-const deck2 = document.querySelector("#palo2");
+const deck2 = document.querySelector("#palo2");*/
 
 let palos = ["♦", "♥", "♠", "♣"];
-let numeros = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K"];
+let numeros = [
+  "A",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "J",
+  "Q",
+  "K"
+];
 
 const generatePalo = () => {
   let paloIndex = Math.floor(Math.random() * palos.length);
@@ -19,38 +34,38 @@ const generateNumber = () => {
   return numeros[numerosIndex];
 };
 
-window.onload = () => {
-  //write your code here
-  deck.innerHTML = generatePalo();
-  deck2.innerHTML = deck.innerHTML;
-  number.innerHTML = generateNumber();
-};
+// window.onload = () => {
+//   //write your code here
+//   deck.innerHTML = generatePalo();
+//   deck2.innerHTML = deck.innerHTML;
+//   number.innerHTML = generateNumber();
+// };
 
-let pickOneButton = document.querySelector("#start");
+//FUNCIONALIDAD BOTON 1
+start.addEventListener("click", cartaAlAzar);
+
+/*let pickOneButton = document.querySelector("#start");
 pickOneButton.addEventListener("click", function() {
   functionAleatoria();
-});
+});*/
+let arrayVacio = [];
+let posicion = 0;
+for (let i = 0; i < palos.length; i++) {
+  for (let j = 0; j < numeros.length; j++) {
+    let prueba = [palos[i], numeros[j]];
+    arrayVacio.push(prueba);
+  }
+}
 
-// let numeroEnPantalla = numeros[Math.floor(Math.random() * numeros.length)];
-// let mostrar = numeroEnPantalla;
-// document.querySelector("#numero").innerHTML = mostrar;
+function cartaAlAzar() {
+  let cartaaa = arrayVacio[posicion];
+  document.querySelector("#palo1").innerHTML = cartaaa[0];
+  document.querySelector("#palo2").innerHTML = cartaaa[0];
+  document.querySelector("#numero").innerHTML = cartaaa[1];
+  posicion = posicion + 1;
+}
 
 /*function functionAleatoria() {
-  let arrayVacio = [];
-  for (let paletos = 0; paletos <= palos.length; paletos++) {
-    for (
-      let numerologo = 0;
-      numerologo[palos].length <= numeros.length;
-      numeros++
-    ) {
-      let combinacion = [paletos + numerologo];
-      let mostrar = arrayVacio.push(combinacion);
-      document.querySelector("#numero").innerHTML = numerologo;
-      document.querySelector("#palo1").innerHTML = paletos;
-    }
-  }
-}*/
-function functionAleatoria() {
   let arrayVacio = [];
   for (let paletos of palos) {
     document.querySelector("#palo1").innerHTML = paletos;
@@ -61,7 +76,8 @@ function functionAleatoria() {
       document.querySelector("#numero").innerHTML = numerologo;
     }
   }
-}
+}*/
+
 /* let buscarnumero = () => {
    let numeroEnPantalla = numeros[Math.floor(Math.random() * numeros.length)];
    let mostrar = numeroEnPantalla;
