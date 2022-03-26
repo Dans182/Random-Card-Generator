@@ -1,11 +1,12 @@
 /* eslint-disable */
+import { start } from "@popperjs/core";
 import "bootstrap";
 import "./style.css";
 
 //CONSTANTES
-/*const deck = document.querySelector("#palo1");
+const deck = document.querySelector("#palo1");
 const number = document.querySelector("#numero");
-const deck2 = document.querySelector("#palo2");*/
+const deck2 = document.querySelector("#palo2");
 
 let palos = ["♦", "♥", "♠", "♣"];
 let numeros = [
@@ -34,20 +35,10 @@ const generateNumber = () => {
   return numeros[numerosIndex];
 };
 
-// window.onload = () => {
-//   //write your code here
-//   deck.innerHTML = generatePalo();
-//   deck2.innerHTML = deck.innerHTML;
-//   number.innerHTML = generateNumber();
-// };
-
 //FUNCIONALIDAD BOTON 1
-start.addEventListener("click", cartaAlAzar);
+document.querySelector("#start").addEventListener("click", cartaAlAzar);
+// start.addEventListener("click", cartaAlAzar);
 
-/*let pickOneButton = document.querySelector("#start");
-pickOneButton.addEventListener("click", function() {
-  functionAleatoria();
-});*/
 let arrayVacio = [];
 let posicion = 0;
 for (let i = 0; i < palos.length; i++) {
@@ -116,3 +107,10 @@ boton.addEventListener(
   },
   false
 );
+
+window.onload = () => {
+  //write your code here
+  deck.innerHTML = generatePalo();
+  deck2.innerHTML = deck.innerHTML;
+  number.innerHTML = generateNumber();
+};
