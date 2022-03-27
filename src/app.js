@@ -66,7 +66,7 @@ function cartaAlAzar() {
     deck2.innerHTML = "";
     number.innerHTML = "";
     botonPickOne.disabled = true;
-    console.log(mazoNuevoDeCartas);
+    //console.log(mazoNuevoDeCartas);
     alert("Han salido todas las cartas");
   }
 }
