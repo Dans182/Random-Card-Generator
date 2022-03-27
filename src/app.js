@@ -41,13 +41,13 @@ const generateNumber = () => {
 //LOOP PARA RECORRER LOS ARRAYS Y ME SUELTE COMBINACIONES AL AZAR
 //MIENTRAS HACE ITERACIONES, ME AGREGA LAS COMBINACIONES EN UN
 //NUEVO ARRAY VACIO
-let arrayVacio = [];
+let mazoNuevoDeCartas = [];
 let posicion = 0;
 for (let i = 0; i < palos.length; i++) {
   for (let j = 0; j < numeros.length; j++) {
     let baraja = [palos[i], numeros[j]];
-    arrayVacio.push(baraja);
-    arrayVacio.sort(() => Math.random() - 0.5);
+    mazoNuevoDeCartas.push(baraja);
+    mazoNuevoDeCartas.sort(() => Math.random() - 0.5);
   }
 }
 
@@ -55,13 +55,13 @@ for (let i = 0; i < palos.length; i++) {
 //
 function cartaAlAzar() {
   botonEliminar.disabled = false;
-  let cartaaa = arrayVacio[posicion];
-  deck.innerHTML = cartaaa[0];
-  deck2.innerHTML = cartaaa[0];
-  number.innerHTML = cartaaa[1];
+  let cartaParaMostrar = mazoNuevoDeCartas[posicion];
+  deck.innerHTML = cartaParaMostrar[0];
+  deck2.innerHTML = cartaParaMostrar[0];
+  number.innerHTML = cartaParaMostrar[1];
   posicion = posicion + 1;
 
-  if (posicion == arrayVacio.length - 1) {
+  if (posicion == mazoNuevoDeCartas.length - 1) {
     deck.innerHTML = "";
     deck2.innerHTML = "";
     number.innerHTML = "";
@@ -69,14 +69,14 @@ function cartaAlAzar() {
   }
 }
 
-const random = arrayVacio => {
-  arrayVacio.sort(() => Math.random() - 0.5);
-  return arrayVacio;
+const random = mazoNuevoDeCartas => {
+  mazoNuevoDeCartas.sort(() => Math.random() - 0.5);
+  return mazoNuevoDeCartas;
 };
 
 //FUNCION PARA EL BOTON 2
 const borrar = () => {
-  arrayVacio = random(arrayVacio);
+  mazoNuevoDeCartas = random(mazoNuevoDeCartas);
   posicion = 0;
   number.innerHTML = "X";
   deck.innerHTML = "";
