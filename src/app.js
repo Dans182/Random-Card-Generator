@@ -53,7 +53,7 @@ for (let i = 0; i < palos.length; i++) {
 
 //FUNCION PARA BOTON 1
 //
-function cartaAlAzar() {
+const cartaAlAzar = () => {
   botonEliminar.disabled = false;
   let cartaParaMostrar = mazoNuevoDeCartas[posicion];
   deck.innerHTML = cartaParaMostrar[0];
@@ -69,7 +69,7 @@ function cartaAlAzar() {
     //console.log(mazoNuevoDeCartas);
     alert("Han salido todas las cartas");
   }
-}
+};
 //FUNCION PARA REINICIAR EL MAZO DE CARTAS, CUANDO PRESIONO RESET
 const random = mazoNuevoDeCartas => {
   mazoNuevoDeCartas.sort(() => Math.random() - 0.5);
