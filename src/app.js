@@ -7,6 +7,8 @@ import "./style.css";
 const deck = document.querySelector("#palo1");
 const number = document.querySelector("#numero");
 const deck2 = document.querySelector("#palo2");
+const botonEliminar = document.querySelector("#eliminar");
+const botonPickOne = document.querySelector("#start");
 
 //LETS
 let palos = ["♦", "♥", "♠", "♣"];
@@ -36,22 +38,6 @@ const generateNumber = () => {
   return numeros[numerosIndex];
 };
 
-//FUNCIONALIDAD BOTON 1
-document.querySelector("#start").addEventListener("click", cartaAlAzar);
-// start.addEventListener("click", cartaAlAzar);
-
-//FUNCIONALIDAD BOTON 2
-/*let boton2 = document.querySelector("#eliminar");
-boton2.addEventListener(
-  "click",
-  function() {
-    document.querySelector("#numero").innerHTML = "";
-    document.querySelector("#palo1").innerHTML = "";
-    document.querySelector("#palo2").innerHTML = "";
-  },
-  false
-);*/
-
 //LOOP PARA RECORRER LOS ARRAYS Y ME SUELTE COMBINACIONES AL AZAR
 //MIENTRAS HACE ITERACIONES, ME AGREGA LAS COMBINACIONES EN UN
 //NUEVO ARRAY VACIO
@@ -59,8 +45,8 @@ let arrayVacio = [];
 let posicion = 0;
 for (let i = 0; i < palos.length; i++) {
   for (let j = 0; j < numeros.length; j++) {
-    let prueba = [palos[i], numeros[j]];
-    arrayVacio.push(prueba);
+    let baraja = [palos[i], numeros[j]];
+    arrayVacio.push(baraja);
     arrayVacio.sort(() => Math.random() - 0.5);
   }
 }
@@ -68,17 +54,18 @@ for (let i = 0; i < palos.length; i++) {
 //FUNCION PARA BOTON 1
 //
 function cartaAlAzar() {
+  botonEliminar.disabled = false;
   let cartaaa = arrayVacio[posicion];
-  document.querySelector("#palo1").innerHTML = cartaaa[0];
-  document.querySelector("#palo2").innerHTML = cartaaa[0];
-  document.querySelector("#numero").innerHTML = cartaaa[1];
+  deck.innerHTML = cartaaa[0];
+  deck2.innerHTML = cartaaa[0];
+  number.innerHTML = cartaaa[1];
   posicion = posicion + 1;
 
   if (posicion == arrayVacio.length - 1) {
-    document.querySelector("#palo1").innerHTML = "";
-    document.querySelector("#palo2").innerHTML = "";
-    document.querySelector("#numero").innerHTML = "";
-    document.querySelector("#start").disabled = true;
+    deck.innerHTML = "";
+    deck2.innerHTML = "";
+    number.innerHTML = "";
+    botonPickOne.disabled = true;
   }
 }
 
@@ -88,6 +75,7 @@ window.onload = () => {
   deck.innerHTML = generatePalo();
   deck2.innerHTML = deck.innerHTML;
   number.innerHTML = generateNumber();
+  botonEliminar.disabled = true;
 };
 
 /*let boton2 = document.querySelector("#eliminar");
@@ -106,14 +94,22 @@ const random = arrayVacio => {
   return arrayVacio;
 };
 
+//FUNCION PARA EL BOTON 2
 const borrar = () => {
   arrayVacio = random(arrayVacio);
   posicion = 0;
-  document.querySelector("#numero").innerHTML = "X";
-  document.querySelector("#palo1").innerHTML = "";
-  document.querySelector("#palo2").innerHTML = "";
-  document.querySelector("#start").enabled = false;
+  number.innerHTML = "X";
+  deck.innerHTML = "";
+  deck2.innerHTML = "";
+  botonPickOne.disabled = false;
+  botonEliminar.disabled = true;
 };
 
-let boton2 = document.querySelector("#eliminar");
-boton2.addEventListener("click", borrar);
+//LISTENERS PARA BOTONES
+
+//LISTENER BOTON 1
+botonPickOne.addEventListener("click", cartaAlAzar);
+// start.addEventListener("click", cartaAlAzar);
+
+//LISTENER BOTON 2
+botonEliminar.addEventListener("click", borrar);
