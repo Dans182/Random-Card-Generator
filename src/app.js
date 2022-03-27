@@ -69,26 +69,6 @@ function cartaAlAzar() {
   }
 }
 
-//CUANDO CARGA LA PANTALLA, MUESTRA COMBINACIÓN DE CARTAS AL AZAR
-window.onload = () => {
-  //write your code here
-  deck.innerHTML = generatePalo();
-  deck2.innerHTML = deck.innerHTML;
-  number.innerHTML = generateNumber();
-  botonEliminar.disabled = true;
-};
-
-/*let boton2 = document.querySelector("#eliminar");
-boton2.addEventListener(
-  "click",
-  function() {
-    document.querySelector("#numero").innerHTML = "";
-    document.querySelector("#palo1").innerHTML = "";
-    document.querySelector("#palo2").innerHTML = "";
-  },
-  false
-);*/
-
 const random = arrayVacio => {
   arrayVacio.sort(() => Math.random() - 0.5);
   return arrayVacio;
@@ -113,3 +93,11 @@ botonPickOne.addEventListener("click", cartaAlAzar);
 
 //LISTENER BOTON 2
 botonEliminar.addEventListener("click", borrar);
+
+//CUANDO CARGA LA PANTALLA, MUESTRA COMBINACIÓN DE CARTAS AL AZAR
+window.onload = () => {
+  deck.innerHTML = generatePalo();
+  deck2.innerHTML = deck.innerHTML;
+  number.innerHTML = generateNumber();
+  botonEliminar.disabled = true;
+};
