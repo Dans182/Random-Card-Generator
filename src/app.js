@@ -66,9 +66,11 @@ function cartaAlAzar() {
     deck2.innerHTML = "";
     number.innerHTML = "";
     botonPickOne.disabled = true;
+    console.log(mazoNuevoDeCartas);
+    alert("Han salido todas las cartas");
   }
 }
-
+//FUNCION PARA REINICIAR EL MAZO DE CARTAS, CUANDO PRESIONO RESET
 const random = mazoNuevoDeCartas => {
   mazoNuevoDeCartas.sort(() => Math.random() - 0.5);
   return mazoNuevoDeCartas;
